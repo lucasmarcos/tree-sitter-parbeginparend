@@ -2,7 +2,7 @@ module.exports = grammar({
   name: "parbeginparend",
   extras: $ => [
     /\s/,
-    $.comment
+    $._comment
   ],
   rules: {
     source_file: $ => repeat($._statement),
@@ -13,6 +13,6 @@ module.exports = grammar({
     parend: $ => "PAREND",
     label: $ => /[a-zA-Z_][a-zA-Z_0-9]*/,
     call: $ => seq($.label, ";"),
-    comment: $ => seq("//", /.*/)
+    _comment: $ => seq("//", /.*/)
   }
 });
